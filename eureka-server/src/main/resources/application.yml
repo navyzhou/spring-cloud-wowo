@@ -1,0 +1,23 @@
+spring:
+   profiles:
+      active: dev-6611
+      
+---
+server:
+   port: 6611 # 指定Eureka服务器端口
+
+spring:
+   profiles: dev-6611
+   application:
+      name: eureka-server # 服务名
+      
+eureka:
+   instance:
+      hostname: 127.0.0.1
+   client:
+      register-with-eureka: false
+      fetch-registy: false
+      service-url:
+         defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+         
+      
