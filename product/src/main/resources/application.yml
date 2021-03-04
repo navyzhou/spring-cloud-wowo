@@ -14,18 +14,17 @@ spring:
 eureka:
    client:
       service-url:
-         defaultZone: http://127.0.0.1:6611/eureka
-         
+         defaultZone: http://127.0.0.1:6611/eureka/ # ,http://127.0.0.1:6612/eureka/
 ---
 server:
-   port: 7711
+   port: 7701
 
 spring:
-   profiles: dev-7711
+   profiles: dev-7701
    application:
       name: product-server
 
 eureka:
    client:
       service-url:
-         defaultZone: http://127.0.0.1:6611/eureka
+         defaultZone: http://127.0.0.1:6611/eureka/ # ,http://127.0.0.1:6612/eureka/

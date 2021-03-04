@@ -13,13 +13,33 @@ spring:
       
 eureka:
    instance:
-      hostname: 127.0.0.1
+      hostname: 127.0.0.1 replica1
    client:
-      register-with-eureka: false
-      fetch-registry: false
+      register-with-eureka: true # 当前微服务是否注册到eureka中
+      fetch-registry: true # 通过eureka获取服务器的注册信息
       service-url:
-         defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+         defaultZone: http://127.0.0.1:6611/eureka/ # ,http://127.0.0.1:6612/eureka/
    server:
       # 关闭自我保护
       enable-self-preservation: false
-         
+      
+---
+server:
+   port: 6612 # 指定Eureka服务器端口
+
+spring:
+   profiles: dev-6612
+   application:
+      name: eureka-server # 服务名
+      
+eureka:
+   instance:
+      hostname: 127.0.0.1 replica2
+   client:
+      register-with-eureka: true # 当前微服务是否注册到eureka中
+      fetch-registry: true # 通过eureka获取服务器的注册信息
+      service-url:
+         defaultZone: http://127.0.0.1:6611/eureka/ # ,http://127.0.0.1:6612/eureka/
+   server:
+      # 关闭自我保护
+      enable-self-preservation: false

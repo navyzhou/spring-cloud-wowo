@@ -1,0 +1,11 @@
+server:
+   port: 8888
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://127.0.0.1:6611/eureka/
+         
+spring:
+   application:
+      name: feign-server
