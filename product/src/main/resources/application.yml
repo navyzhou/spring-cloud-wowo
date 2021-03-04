@@ -1,0 +1,31 @@
+spring:
+   profiles:
+      active: dev-7700
+
+---
+server:
+   port: 7700
+
+spring:
+   profiles: dev-7700
+   application:
+      name: product-server
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://127.0.0.1:6611/eureka
+         
+---
+server:
+   port: 7711
+
+spring:
+   profiles: dev-7711
+   application:
+      name: product-server
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://127.0.0.1:6611/eureka
