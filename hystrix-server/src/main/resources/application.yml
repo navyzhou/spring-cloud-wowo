@@ -1,0 +1,25 @@
+server:
+   port: 7788
+
+spring:
+   application:
+      name: hystrix-server
+      
+eureka:
+   client:
+      service-url:
+         defaultZone: http://127.0.0.1:6611/eureka/
+         
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 1000
+      info3: # 需要修改配置的方法的方法名
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 3000
+      

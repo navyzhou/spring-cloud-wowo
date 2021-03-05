@@ -14,4 +14,19 @@ public class DemoController {
 	public String hello() {
 		return "product-" + port;
 	}
+	
+	@RequestMapping("/info1")
+	public String info1() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "info1";
+	}
+	
+	@RequestMapping("/info2")
+	public String info2() {
+		return "info2";
+	}
 }
