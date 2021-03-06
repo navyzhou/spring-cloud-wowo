@@ -1,0 +1,29 @@
+spring:
+   profiles:
+      active: dev-6868
+
+---
+server:
+   port: 6868
+
+spring:
+   profiles: dev-6868
+   application:
+      name: wowo-eureka-server
+   security:
+      user:
+         name: navy
+         password: 123321
+
+eureka:
+   instance:
+      hostname: 127.0.0.1
+   client:
+      register-with-eureka: false
+      fetch-registry: false
+      service-url:
+         # http://navy:123321@127.0.0.1:6868/eureka
+         defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+   server:
+      # 关闭自我保护
+      enable-self-preservation: false
