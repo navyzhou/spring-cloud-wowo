@@ -14,7 +14,7 @@ let header = new Vue({
 		})
 		
 		// 发送一个请求去获取用户登录信息
-		axios.get("member/check").then( rt => {
+		axios.post("login/check").then( rt => {
 			if (rt.status == 200 && rt.data.code == 200) {
 				this.onlogin = true;
 				this.memberInfo = rt.data.data;

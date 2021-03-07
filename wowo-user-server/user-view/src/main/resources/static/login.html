@@ -241,7 +241,7 @@ let login = new Vue({
 					// 获取来源地址，即是从哪个页面跳转过来的
 					var ref = document.referrer;
 					if (ref == "" || ref.indexOf("reg.html") > 0) { // 如果是直接进入的登录界面或是从注册界面过来的，则跳到首页
-						location.href="index.html";
+						location.href="/product/index.html";
 					} else {
 						location.href = ref;
 					}

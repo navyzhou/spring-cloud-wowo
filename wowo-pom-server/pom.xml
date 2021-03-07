@@ -139,30 +139,30 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
-		<!-- 消息中间件 -->
+		<!-- 消息中间件
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
-
-		<!-- stream为微服务应用构建消息驱动能力 -->
+ 		-->
+		<!-- stream为微服务应用构建消息驱动能力
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
 		</dependency>
-
+		 -->
 		<!-- 配置中心 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 
-		<!-- bus总线 -->
+		<!-- bus总线 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 		</dependency>
-
+		-->
 		<!-- spring bott session管理 -->
 		<dependency>
 			<groupId>org.springframework.session</groupId>

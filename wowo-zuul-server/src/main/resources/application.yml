@@ -1,0 +1,57 @@
+spring:
+   profiles:
+      active: dev-7777
+      
+---
+server:
+   port: 7777
+
+spring:
+   profiles: dev-7777
+   application:
+      name: wowo-zuul-server
+        
+zuul:
+   # 开始重试机制
+   retryable: true
+   # 所有服务的敏感头部过滤
+   sensitive-headers: 
+   max:
+      host:
+         connections: 500
+   host:
+      # 最大连接数
+      max-total-connections: 200
+      # 每个路由的最大连接数
+      max-pre-route-connections: 20
+   routes:
+      service-rpc-product:
+         path: /product/**
+         service-id: wowo-product-server
+      
+      # 服务名： 拦截路径
+      wowo-user-server: /user/**
+
+# Zuul中默认就已经继承了Ribbon负责均衡和Hystrix熔断机制，所有的超时策略都是启用的默认值，所有很容易触发
+ribbon:
+   # 超时时间
+   ConnectTimeout: 3000
+   # 通信超时时间
+   ReadTimeout: 5000
+   # 是否对所有操作重试
+   OkToRetryOnAllOperations: true
+   MaxAutoRetriesNextServer: 2
+   MaxAutoReties: 1
+
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 30000
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://navy:123321@127.0.0.1:6868/eureka/

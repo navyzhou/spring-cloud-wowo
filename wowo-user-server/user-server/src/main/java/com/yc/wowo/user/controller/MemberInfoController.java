@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,8 +39,16 @@ public class MemberInfoController {
 	@Autowired
 	private IMemberInfoService memberInfoServiceImpl;
 
-
-	@RequestMapping("/check")
+	@PostMapping("/checkLogin")
+	public MemberLoginInfoDTO checkLogin(HttpSession session) throws IOException {
+		Object obj = session.getAttribute(SessionKeyConstant.MEMBERINFOLOGIN);
+		if (obj == null) {
+			return null;
+		}
+		return (MemberLoginInfoDTO) obj;
+	}
+	
+	@PostMapping("/check")
 	public ResultVO check(HttpSession session) throws IOException {
 		Object obj = session.getAttribute(SessionKeyConstant.MEMBERINFOLOGIN);
 		if (obj == null) {
@@ -80,7 +89,6 @@ public class MemberInfoController {
 			MemberLoginInfoDTO memberInfoLoginDTO = new MemberLoginInfoDTO();
 			// 属性拷贝，将相同的属性名的值拷贝到对应的属性中
 			BeanUtils.copyProperties(mf, memberInfoLoginDTO);
-
 			session.setAttribute(SessionKeyConstant.MEMBERINFOLOGIN, memberInfoLoginDTO);
 			return new ResultVO(ResultEnum.SUCCESS);
 		}
@@ -104,5 +112,17 @@ public class MemberInfoController {
 			return new ResultVO(ResultEnum.SUCCESS);
 		}
 		return new ResultVO(ResultEnum.ERROR);
+	}
+	
+	@PostMapping("/loginout")
+	public int loginout(HttpSession session, @RequestParam String openid) {
+		try {
+			session.removeAttribute(SessionKeyConstant.MEMBERINFOLOGIN);
+			
+			// 根据某一个标识符删除session中的数据
+			return 1;
+		} catch (Exception e) {
+			return 0;
+		}
 	}
 }

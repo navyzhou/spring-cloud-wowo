@@ -56,6 +56,18 @@ eureka:
       service-url:
          defaultZone: http://navy:123321@127.0.0.1:6868/eureka/
          
+hystrix:
+   command:
+      default:
+         execution:
+            isolation:
+               thread:
+                  timeoutInMilliseconds: 5000
+
+feign:
+   hystrix:
+      enabled: true
+         
 logging:
    level:
       com.yc.wowo.product.mapper: debug

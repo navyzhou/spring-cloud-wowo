@@ -49,9 +49,9 @@
 	    <li class="headTopLogin"> 
 	    	<span class="Gray7"> 您好！ 
 	    	[<a v-if="onlogin" class="yellowd1" rel="nofollow" href="#" target="_blank">{{memberInfo.nickName}}</a>
-	    <a v-else class="yellowd1" rel="nofollow" href="login.html" target="_blank">请登录</a>]
+	    <a v-else class="yellowd1" rel="nofollow" href="/user/login.html" target="_blank">请登录</a>]
 	    	 
-	    	<b class="borderdc">|</b> [<a class="yellowd1" rel="nofollow" href="reg.html" target="_blank">注册</a>] 
+	    	<b class="borderdc">|</b> [<a class="yellowd1" rel="nofollow" href="/user/reg.html" target="_blank">注册</a>] 
 	    	<b class="borderdc p_0_10">|</b> </span>
 	      <ul class="clearfix">
 	        <li id="msgCount" class="headTopUlist no"> <em class="messico">messico</em> <a class="Gray7" rel="nofollow" href="#">消息</a> </li>
@@ -116,7 +116,7 @@
       <h2 class="good-title"> <a class="biaoa" :href="'details.html?' + good.gid" target="_blank">
 		<strong>【{{good.area}}】{{good.sname}}{{good.gname}}</strong> {{good.intro}}</a></h2>
       <div class="index-smalllogo"> <a class="yuy" target="_blank" href="#">免预约</a> </div>
-      <a class="picture" :href="'details.html?' + good.gid" target="_blank"><img width="348" height="232" rel="nofollow" :src="good.pic"> </a>
+      <a class="picture" :href="'details.html?' + good.gid" target="_blank"><img width="348" height="232" rel="nofollow" :src="'product/' + good.pic"> </a>
       <div class="buy-boxInd clearfix">
       	<a class="bh buy_a" rel="nofollow" :href="'details.html?' + good.gid" target="_blank" status="0">去看看</a>
 		<span class="num">&yen;{{good.price * good.rebate/100}}</span> <span class="past">价值 &yen;{{good.price}}</span>
