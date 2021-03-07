@@ -1,0 +1,24 @@
+spring:
+   profiles:
+      active: dev-8811
+
+---
+server:
+   port: 8811
+   
+spring:
+   profiles: dev-8811
+   application:
+      name: wowo-user-server
+   cloud:
+      config:
+         name: user # {name}-{profiles}.yml
+         profile: dev # user-dev.yml
+         discovery:
+            enabled: true # 开启配置发现
+            service-id: wowo-config-server # 配置中心服务器
+            
+eureka:
+   client:
+      service-url:
+         defaultZone: http://navy:123321@127.0.0.1:6868/eureka/
