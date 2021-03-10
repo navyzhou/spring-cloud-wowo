@@ -4,36 +4,37 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>com.yc</groupId>
-		<artifactId>wowo-product-server</artifactId>
+		<artifactId>wowo-order-server</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<artifactId>order-server</artifactId>
+	<name>order-server</name>
 
-	<artifactId>product-server</artifactId>
-
-	<name>product-server</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<product-view.version>0.0.1-SNAPSHOT</product-view.version>
 		<user-common.version>0.0.1-SNAPSHOT</user-common.version>
 		<user-client.version>0.0.1-SNAPSHOT</user-client.version>
+		<product-common.version>0.0.1-SNAPSHOT</product-common.version>
+		<product-client.version>0.0.1-SNAPSHOT</product-client.version>
+		<order-view.version>0.0.1-SNAPSHOT</order-view.version>
 	</properties>
 
 	<dependencies>
+		<!-- 阿里沙箱支付依赖包 -->
+		<dependency>
+			<groupId>com.alipay.sdk</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>4.9.124.ALL</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.yc</groupId>
 			<artifactId>wowo-pom-server</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<type>pom</type>
-		</dependency>
-
-		<dependency>
-			<groupId>com.yc</groupId>
-			<artifactId>product-view</artifactId>
-			<version>${product-view.version}</version>
 		</dependency>
 
 		<dependency>
@@ -47,16 +48,34 @@
 			<artifactId>user-client</artifactId>
 			<version>${user-client.version}</version>
 		</dependency>
-	</dependencies>
 
+		<dependency>
+			<groupId>com.yc</groupId>
+			<artifactId>product-common</artifactId>
+			<version>${product-common.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yc</groupId>
+			<artifactId>product-client</artifactId>
+			<version>${product-client.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.yc</groupId>
+			<artifactId>order-view</artifactId>
+			<version>${order-view.version}</version>
+		</dependency>
+	</dependencies>
+	
 	<build>
-		<finalName>wowo-product-server</finalName>
+		<finalName>wowo-order-server</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.yc.wowo.product.ProductServerStartApplication</mainClass>
+					<mainClass>com.yc.wowo.order.OrderServerStartApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

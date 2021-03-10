@@ -1,0 +1,24 @@
+spring:
+   profiles:
+      active: dev-8833
+
+---
+server:
+   port: 8833
+
+spring:
+   profiles: dev-8833
+   application:
+      name: wowo-order-server
+   cloud:
+      config:
+         name: order
+         profile: dev
+         discovery:
+            enabled: true
+            service-id: wowo-config-server
+            
+eureka:
+   client:
+      service-url:
+         defaultZone: http://navy:123321@127.0.0.1:6868/eureka/

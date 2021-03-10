@@ -1,0 +1,24 @@
+spring:
+   profiles:
+      active: dev-7777
+      
+---
+server:
+   port: 7777
+
+spring:
+   profiles: dev-7777
+   application:
+      name: wowo-zuul-server
+   cloud:
+      config:
+         name: zuul # {name}-{profiles}.yml
+         profile: dev # user-dev.yml
+         discovery:
+            enabled: true # 开启配置发现
+            service-id: wowo-config-server # 配置中心服务器
+
+eureka:
+   client:
+      service-url:
+         defaultZone: http://navy:123321@127.0.0.1:6868/eureka/
